@@ -9,24 +9,27 @@ const connectMongo = require("./server/config/db");
 const cookieParser = require("cookie-parser");
 const mongoStore = require("connect-mongo");
 const session = require("express-session");
-const port = 5000 || process.env.PORT;
+const port = process.env.PORT || 5000; // Corrected the order of conditions
 
-//connect to Db
+// Connect to Db
 connectMongo();
-//middleware
+
+// Middleware
 app.use(expressLayouts);
 app.set("layout", "./layouts/main");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(methodOverride("_method"));
 app.use(cookieParser());
-const mongoUrl = process.env.MONGO_URI
+
+const mongoUrl = process.env.MONGO_URI;
+
 app.use(
   session({
     secret: "kukuriku",
     resave: false,
     saveUninitialized: true,
-    store: mongoStore.create({ mongoUrl }),
+    store: new mongoStore({ mongoUrl }), // Corrected the way of creating mongoStore instance
     cookie: { secure: false }
   })
 );
@@ -36,8 +39,7 @@ app.use(express.static("public"));
 
 app.use("/", require("./server/routes/main"));
 app.use("/", require("./server/routes/admin"));
-// app.use("/", require("./server/routes/teacher"))
 
 app.listen(port, () => {
-  console.log(`server listening on port ${port}`);
+  console.log(`Server listening on port ${port}`);
 });
