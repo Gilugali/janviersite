@@ -20,12 +20,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(methodOverride("_method"));
 app.use(cookieParser());
+const mongoUrl = process.env.MONGO_URI
 app.use(
   session({
     secret: "kukuriku",
     resave: false,
     saveUninitialized: true,
-    store: mongoStore.create({ mongoUrl: process.env.MONGO_URI }),
+    store: mongoStore.create({ mongoUrl }),
+    cookie: { secure: false }
   })
 );
 
