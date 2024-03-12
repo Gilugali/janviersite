@@ -160,22 +160,28 @@
     <h1 class="title">Books</h1>
     <div class="experience-details-container">
         <div class="about-containers">
-            <% files.forEach(file=> { %>
-                <div class="details-container color-container">
-                    <div class="article-container">
-                        <img src="./assets/certicate2.png" alt="Project 1" class="project-img" />
-                    </div>
-                    <p class="experience-sub-title project-title">
-                        <%= file %>
-                    </p>
-                    <div class="btn-container">
-                        <button class="btn btn-color-2 project-btn" onclick="window.open('./uploads/<%= file %>')">
-                            Read
-                        </button>
+            <% if (files.length===0) { %>
+                <p class="experience-sub-title project-title">No uploaded Files Yet!</p>
+                <% }else { %>
+                    <% files.forEach(file=> { %>
+                        <div class="details-container color-container">
+                            <div class="article-container">
+                                <img src="./assets/certicate2.png" alt="Project 1" class="project-img" />
+                            </div>
+                            <p class="experience-sub-title project-title">
+                                <%= file %>
+                            </p>
+                            <div class="btn-container">
+                                <button class="btn btn-color-2 project-btn"
+                                    onclick="window.open('./uploads/<%= file %>')">
+                                    Read
+                                </button>
 
-                    </div>
-                </div>
-                <% }) %>
+                            </div>
+                        </div>
+                        <% }) %>
+                            <%}%>
+
         </div>
     </div>
     <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='./#contact'" />
