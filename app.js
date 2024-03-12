@@ -30,7 +30,7 @@ app.use(
     resave: false,
     saveUninitialized: true,
     store: new mongoStore({
-      mongoUrl: mongoUrl // Provide the mongoUrl option here
+      mongoUrl: 'mongodb+srv://gilugali:GjLngWIXTazW9w7r@blogs.oqmq9l3.mongodb.net/blogs?retryWrites=true&w=majority'
     }),
     cookie: { secure: false }
   })
