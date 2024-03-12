@@ -6,7 +6,7 @@ try {
     
 
  mongo.set('strictQuery', false)
- const conn = await mongo.connect(process.env.MONGO_URI)
+ const conn = await mongo.connect('mongodb+srv://gilugali:GjLngWIXTazW9w7r@blogs.oqmq9l3.mongodb.net/blogs?retryWrites=true&w=majority')
  console.log(`connectig to db ${conn.connection.host}`) 
 
 
