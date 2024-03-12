@@ -9,7 +9,7 @@ const connectMongo = require("./server/config/db");
 const cookieParser = require("cookie-parser");
 const mongoStore = require("connect-mongo");
 const session = require("express-session");
-const port = process.env.PORT || 5000; // Corrected the order of conditions
+const port = process.env.PORT || 5000;
 
 // Connect to Db
 connectMongo();
@@ -29,7 +29,9 @@ app.use(
     secret: "kukuriku",
     resave: false,
     saveUninitialized: true,
-    store: new mongoStore({ mongoUrl }), // Corrected the way of creating mongoStore instance
+    store: new mongoStore({
+      mongoUrl: mongoUrl // Provide the mongoUrl option here
+    }),
     cookie: { secure: false }
   })
 );
