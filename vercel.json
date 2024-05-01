@@ -1,14 +1,7 @@
 {
   "routes": [
-  
-    {
+   {
       "src": "/", "dest": "./app.js" 
   },
-
-  ],
-  "build": {
-    "env": {
-   
-    },
-    "command": "npm run build"
+  ]
   }
